@@ -6,10 +6,16 @@ import { SharedMaterialModule } from './module/shared-material/shared-material.m
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './page/login/login.component';
+import { MenuSidenavComponent } from './page/menu-sidenav/menu-sidenav.component';
+import { MenuToolbarComponent } from './page/menu-toolbar/menu-toolbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    MenuSidenavComponent,
+    MenuToolbarComponent
   ],
   imports: [
     BrowserModule,
