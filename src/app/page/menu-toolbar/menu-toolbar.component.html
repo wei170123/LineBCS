@@ -1,3 +1,9 @@
-<p>
-  menu-toolbar works!
-</p>
+<mat-toolbar *ngIf="isLoggedin">
+  <button mat-button (click)="sideNav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button> &nbsp;
+  <span style="cursor: pointer; " href="/bcs">Done See</span>
+  <span class="example-spacer"></span>
+  <mat-icon>person</mat-icon>{{username}} &nbsp;
+  <mat-icon style="cursor: pointer; " (click)="logout()">exit_to_app</mat-icon><span style="cursor: pointer; " (click)="logout()">Logout</span>
+</mat-toolbar>

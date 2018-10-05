@@ -1,14 +1,11 @@
-<mat-toolbar>
-  <app-menu-toolbar></app-menu-toolbar>
-</mat-toolbar>
+<app-menu-toolbar [isLoggedin]="isLoggedin"></app-menu-toolbar>
 
-<mat-sidenav-container fullscreen>
-  <mat-sidenav #sideNav opened="true" mode="side">
-    <app-menu-sidenav></app-menu-sidenav>
+<mat-sidenav-container>
+  <mat-sidenav #sideNav mode="side">
+    <app-menu-sidenav [hidden]="!isLoggedin"></app-menu-sidenav>
   </mat-sidenav>
-
   <mat-sidenav-content>
-    <button mat-button (click)="sideNav.toggle()">Toggle</button>
+    <!-- <button mat-button (click)="sideNav.toggle()">Toggle</button> -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

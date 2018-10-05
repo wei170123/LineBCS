@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,17 +11,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './page/login/login.component';
 import { MenuSidenavComponent } from './page/menu-sidenav/menu-sidenav.component';
 import { MenuToolbarComponent } from './page/menu-toolbar/menu-toolbar.component';
+import { HomeComponent } from './page/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MenuSidenavComponent,
-    MenuToolbarComponent
+    MenuToolbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     SharedMaterialModule
   ],
