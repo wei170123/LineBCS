@@ -12,7 +12,9 @@ import {
   MatIconModule,
   MatProgressSpinnerModule,
   MatListModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 @NgModule({
@@ -29,7 +31,9 @@ import {
     MatIconModule,
     MatProgressSpinnerModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 

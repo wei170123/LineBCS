@@ -1,11 +1,13 @@
-<app-menu-toolbar [isLoggedin]="isLoggedin"></app-menu-toolbar>
+<div fxLayout="column" fxFlex>
+  <app-menu-toolbar [isLoggedin]="isLoggedin"></app-menu-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav #sideNav mode="side">
-    <app-menu-sidenav [hidden]="!isLoggedin"></app-menu-sidenav>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <!-- <button mat-button (click)="sideNav.toggle()">Toggle</button> -->
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container fxFlex>
+    <mat-sidenav #sideNav mode="side" [ngStyle]="{'width':isLoggedin ? '200px' : '0px' }">
+      <app-menu-sidenav [hidden]="!isLoggedin"></app-menu-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color:white;">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

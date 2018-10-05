@@ -1,7 +1,4 @@
-<mat-toolbar *ngIf="isLoggedin">
-  <button mat-button (click)="sideNav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button> &nbsp;
+<mat-toolbar class="my-toolbar" color="primary" *ngIf="isLoggedin">
   <span style="cursor: pointer; " href="/bcs">Done See</span>
   <span class="example-spacer"></span>
   <mat-icon>person</mat-icon>{{username}} &nbsp;

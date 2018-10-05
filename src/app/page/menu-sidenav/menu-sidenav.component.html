@@ -1,14 +1,33 @@
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        收件夾
-    </mat-expansion-panel-header>
-    <!-- 收件夾內容 -->
-    ...
-</mat-expansion-panel>
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        聯絡人列表
-    </mat-expansion-panel-header>
-    <!-- 聯絡人列表內容 -->
-    ...
-</mat-expansion-panel>
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>發送群組</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>群組列表</a>
+            <a [routerLink]="['/', 'dashboard', 'blog']" mat-list-item>建立群組</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>訊息發送</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>訊息列表</a>
+            <a [routerLink]="['/', 'dashboard', 'blog']" mat-list-item>訊息發送</a>
+            <a [routerLink]="['/', 'dashboard', 'inbox']" mat-list-item>建立訊息</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>成效檢視</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>好友列表</a>
+            <a [routerLink]="['/', 'dashboard', 'survey']" mat-list-item>發送成效</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+
+</mat-accordion>

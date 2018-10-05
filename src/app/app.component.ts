@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
+
+// import { MenuSidenavComponent } from './page/menu-sidenav/menu-sidenav.component';
 
 import { AuthService } from './service/auth/auth.service';
 
@@ -9,6 +12,9 @@ import { AuthService } from './service/auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('sideNav')
+  private sidenav: MatSidenav;
+
   title = 'LineBCS';
   isLoggedin: Boolean = false;
 
@@ -22,6 +28,7 @@ export class AppComponent {
         if (this.auth.isLoggedIn()) {
           this.isLoggedin = true;
           this.router.navigateByUrl('/bcs');
+          this.sidenav.open();
         }
         else {
           this.isLoggedin = false;
@@ -29,5 +36,9 @@ export class AppComponent {
 
       }
     });
+  }
+
+  navToggle() {
+
   }
 }
