@@ -23,15 +23,18 @@ export class AppComponent {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         // console.log(this.router.url);
-
-        if (this.auth.isLoggedIn()) {
-          this.isLoggedin = true;
+        this.isLoggedin = this.auth.isLoggedIn();
+        if (this.isLoggedin && this.router.url == '/login') {
+          // this.isLoggedin = true;
           this.router.navigateByUrl('/bcs');
           this.sidenav.open();
         }
-        else {
-          this.isLoggedin = false;
+        else if (this.isLoggedin) {
+          this.sidenav.open();
         }
+        // else {
+        //   this.isLoggedin = false;
+        // }
 
       }
     });

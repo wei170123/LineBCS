@@ -5,6 +5,7 @@
     <mat-sidenav #sideNav mode="side" [ngStyle]="{'width':isLoggedin ? '200px' : '0px' }">
       <app-menu-sidenav [hidden]="!isLoggedin"></app-menu-sidenav>
     </mat-sidenav>
+
     <mat-sidenav-content style="background-color:white;">
       <router-outlet></router-outlet>
     </mat-sidenav-content>

@@ -12,6 +12,7 @@ import { LoginComponent } from './page/login/login.component';
 import { MenuSidenavComponent } from './page/menu-sidenav/menu-sidenav.component';
 import { MenuToolbarComponent } from './page/menu-toolbar/menu-toolbar.component';
 import { HomeComponent } from './page/home/home.component';
+import { TestComponent } from './page/test/test.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './page/home/home.component';
     LoginComponent,
     MenuSidenavComponent,
     MenuToolbarComponent,
-    HomeComponent
+    HomeComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
