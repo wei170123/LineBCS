@@ -17,7 +17,6 @@ export class AppComponent {
 
   title = 'LineBCS';
   isLoggedin: Boolean = false;
-  navWidth: string = '0px';
 
   constructor(private router: Router, private auth: AuthService) {
     //Detect Route Change & Check Loggedin
@@ -27,13 +26,11 @@ export class AppComponent {
 
         if (this.auth.isLoggedIn()) {
           this.isLoggedin = true;
-          this.navWidth = '200px';
           this.router.navigateByUrl('/bcs');
           this.sidenav.open();
         }
         else {
           this.isLoggedin = false;
-          this.navWidth = '0px';
         }
 
       }
