@@ -54,7 +54,8 @@ export class AuthService {
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('X-BCS-TOKEN');
-    this.router.navigateByUrl('/login');
+    // this.router.navigateByUrl('/login');
+    window.location.href = environment.bcsFront;
   }
 
   public getUserDetails(): UserDetails {
