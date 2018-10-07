@@ -11,8 +11,19 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
 
-  { path: 'bcs', component: HomeComponent, canActivate: [AuthGuardService] },
-  { path: 'friend', component: TestComponent, canActivate: [AuthGuardService] }
+  {
+    path: 'bcs',
+    component: HomeComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      { path: "friend", component: TestComponent },
+      {
+        path: 'friendList',
+        loadChildren: './page/page-friend-list/page-friend-list.module#PageFriendListModule'
+      }
+    ]
+  }
+  // { path: 'friend', component: TestComponent, canActivate: [AuthGuardService] }
 ]
 
 @NgModule({

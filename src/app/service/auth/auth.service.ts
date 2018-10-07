@@ -11,9 +11,6 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 
-@Injectable({
-  providedIn: 'root'
-})
 export class AuthService {
   private token: string;
 
