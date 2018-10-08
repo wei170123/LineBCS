@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material';
-import { LineUserDetails } from '../../model/friendList-model';
-import { DataService } from '../../service/data/data.service';
+import { LineUserDetails } from '../../../model/friendList-model';
+import { DataService } from '../../../service/data/data.service';
 
 @Component({
   selector: 'app-page-friend-list',

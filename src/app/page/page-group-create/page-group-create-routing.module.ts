@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PageFriendListComponent } from './component/page-friend-list.component';
+import { PageGroupCreateComponent } from './component/page-group-create.component';
 
 const routes: Routes = [
-  { path: '', component: PageFriendListComponent }
+  { path: '', component: PageGroupCreateComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PageFriendListRoutingModule { }
+export class PageGroupCreateRoutingModule { }

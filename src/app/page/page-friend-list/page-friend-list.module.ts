@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PageFriendListComponent } from './page-friend-list.component';
+import { PageFriendListComponent } from './component/page-friend-list.component';
 import { PageFriendListRoutingModule } from './page-friend-list-routing.module';
 
 @NgModule({
