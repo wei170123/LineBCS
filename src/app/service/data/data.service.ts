@@ -14,13 +14,13 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   public getFriendList() {
-    // return this.http.get<LineUserDetails[]>(environment.bcs + '/bcs/data/friendList');
-    this.http.get<LineUserDetails[]>(environment.bcs + '/bcs/data/friendList')
-      .subscribe(
-        x => {
-          console.log(x);
-          return x;
-        }
-      );
+    return this.http.get<LineUserDetails[]>(environment.bcs + '/bcs/data/friendList');
+    // this.http.get<LineUserDetails[]>(environment.bcs + '/bcs/data/friendList')
+    //   .subscribe(
+    //     x => {
+    //       console.log(x);
+    //       return x;
+    //     }
+    //   );
   }
 }
