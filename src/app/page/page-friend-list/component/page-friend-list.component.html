@@ -1,38 +1,35 @@
-<p>
-  test works!
-</p>
-<!-- <mat-table [dataSource]="lineUserDetails">
+<mat-table [dataSource]="lineUserDetails">
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>名稱</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.name }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="uid">
     <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.uid }}</mat-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.uid }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="createTime">
     <mat-header-cell *matHeaderCellDef>加入時間</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.createTime }}</mat-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.createTime }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef>狀態</mat-header-cell>
-    <mat-cell *matCellDef="let row">{{ row.status }}</mat-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.status }}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="management">
+  <!-- <ng-container matColumnDef="management">
     <mat-header-cell *matHeaderCellDef>
       <u>管理</u>
     </mat-header-cell>
-    <mat-cell *matCellDef="let row">
+    <mat-cell *matCellDef="let lineUserModel">
       <button mat-button color="primary">回覆</button>
       <button mat-button color="warn">刪除</button>
     </mat-cell>
-  </ng-container>
+  </ng-container> -->
 
-  <mat-header-row *matHeaderRowDef="['name', 'uid', 'createTime', 'status', 'management']"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="['name', 'uid', 'createTime', 'status']"></mat-header-row>
 
-  <mat-row *matRowDef="let lineUserDetails; columns: ['name', 'uid', 'createTime', 'status', 'management']"></mat-row>
-</mat-table> -->
+  <mat-row *matRowDef="let row; columns: ['name', 'uid', 'createTime', 'status']"></mat-row>
+</mat-table>

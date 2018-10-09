@@ -1,4 +1,4 @@
-export interface LineUserDetails {
+export interface LineUserModel {
   uid: string;
   name: string;
   status: string;
