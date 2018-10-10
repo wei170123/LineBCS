@@ -1,7 +1,11 @@
-<mat-table [dataSource]="lineUserDetails">
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="lineUserDataSource">
+
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef>名稱</mat-header-cell>
-    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.name }}</mat-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.name ? lineUserModel.name : '--No Name--'}}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="uid">
@@ -16,18 +20,8 @@
 
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef>狀態</mat-header-cell>
-    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.status }}</mat-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ getChineseStatus(lineUserModel.status)}}</mat-cell>
   </ng-container>
-
-  <!-- <ng-container matColumnDef="management">
-    <mat-header-cell *matHeaderCellDef>
-      <u>管理</u>
-    </mat-header-cell>
-    <mat-cell *matCellDef="let lineUserModel">
-      <button mat-button color="primary">回覆</button>
-      <button mat-button color="warn">刪除</button>
-    </mat-cell>
-  </ng-container> -->
 
   <mat-header-row *matHeaderRowDef="['name', 'uid', 'createTime', 'status']"></mat-header-row>
 
