@@ -13,13 +13,6 @@ export class DataService {
 
   public getFriendList() {
     return this.http.get<LineUserModel[]>(environment.bcs + '/bcs/data/friendList');
-    // this.http.get<LineUserDetails[]>(environment.bcs + '/bcs/data/friendList')
-    //   .subscribe(
-    //     x => {
-    //       console.log(x);
-    //       return x;
-    //     }
-    //   );
   }
 
 }

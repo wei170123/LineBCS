@@ -1,5 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import {
+  MatInputModule,
+  MatFormFieldModule
+} from '@angular/material';
 
 import { PageGroupCreateRoutingModule } from './page-group-create-routing.module';
 import { PageGroupCreateComponent } from './component/page-group-create.component';
@@ -7,6 +15,10 @@ import { PageGroupCreateComponent } from './component/page-group-create.componen
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatInputModule,
+    MatFormFieldModule,
     PageGroupCreateRoutingModule
   ],
   declarations: [PageGroupCreateComponent]

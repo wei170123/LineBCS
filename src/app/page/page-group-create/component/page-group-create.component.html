@@ -1,3 +1,32 @@
-<p>
-  page-group-create works!
-</p>
+<h1>建立群組</h1>
+<div class="container" fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill>
+  <div class="container">
+
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="群組名稱" [(ngModel)]="formData.groupName" name="groupName" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="群組描述" [(ngModel)]="formData.groupDescription" name="groupDescription">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="群組成員" [(ngModel)]="formData.groupUid" name="groupUid" required>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <button mat-raised-button (click)="createGroup()" color="primary">建立</button>
+    </form>
+  </div>
+</div>
