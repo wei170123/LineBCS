@@ -1,6 +1,6 @@
 export interface GroupModel {
     groupName: string;
     groupDescription: string;
-    groupUid?: string[];
+    groupMainId: number;
     createTime?: string;
 }

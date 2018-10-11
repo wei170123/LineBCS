@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
+  MatButtonModule,
   MatInputModule,
   MatFormFieldModule
 } from '@angular/material';
@@ -17,6 +18,7 @@ import { PageGroupCreateComponent } from './component/page-group-create.componen
     CommonModule,
     FormsModule,
     FlexLayoutModule,
+    MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     PageGroupCreateRoutingModule
