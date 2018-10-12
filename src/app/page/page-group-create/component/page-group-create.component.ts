@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GroupModel } from '../../../model/group-model';
 
 import { GroupService } from '../../../service/group/group.service';
+
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-page-group-create',
@@ -17,7 +20,7 @@ export class PageGroupCreateComponent implements OnInit {
     groupMainId: 0
   };
 
-  constructor(private groupService: GroupService) { }
+  constructor(private groupService: GroupService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -49,6 +52,7 @@ export class PageGroupCreateComponent implements OnInit {
         (data) => {
           // console.log(data);
           alert('新增成功!')
+          this.router.navigateByUrl('/bcs/groupList');
         },
         (err) => {
           // console.info(err);

@@ -1,3 +1,37 @@
-<p>
-  page-group-list works!
-</p>
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="groupDataSource">
+
+  <ng-container matColumnDef="groupName">
+    <mat-header-cell *matHeaderCellDef>名稱</mat-header-cell>
+    <mat-cell *matCellDef="let groupModel">{{ groupModel.groupName}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="groupDescription">
+    <mat-header-cell *matHeaderCellDef>描述</mat-header-cell>
+    <mat-cell *matCellDef="let groupModel">{{ groupModel.groupDescription ? groupModel.groupDescription : '--None--' }}</mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="createTime">
+    <mat-header-cell *matHeaderCellDef>建立時間</mat-header-cell>
+    <mat-cell *matCellDef="let groupModel">{{ groupModel.createTime }}</mat-cell>
+  </ng-container> -->
+
+  <!-- <ng-container matColumnDef="groupMainId">
+    <mat-header-cell *matHeaderCellDef>成員列表</mat-header-cell>
+    <mat-cell *matCellDef="let groupModel">{{ groupModel.groupMainId }}</mat-cell>
+  </ng-container> -->
+
+  <ng-container matColumnDef="groupMainId">
+    <mat-header-cell *matHeaderCellDef>成員</mat-header-cell>
+    <mat-cell *matCellDef="let groupModel">
+      <button mat-button color="primary" (click)="exportList(groupModel.groupMainId)">顯示</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['groupName', 'groupDescription', 'groupMainId']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['groupName', 'groupDescription', 'groupMainId']"></mat-row>
+</mat-table>
+<iframe [src]="fileUrl" hidden></iframe>

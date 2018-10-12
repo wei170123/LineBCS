@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { GroupModel } from '../../model/group-model';
 import { environment } from '../../../environments/environment';
@@ -28,4 +27,11 @@ export class GroupService {
     return this.http.post(environment.bcs + '/bcs/group/createGroup', group);
   }
 
+  public getGroupList() {
+    return this.http.get<GroupModel[]>(environment.bcs + '/bcs/group/groupList');
+  }
+
+  public getUserListById(id) {
+    return this.http.get<any>(environment.bcs + '/bcs/group/groupUserList', { params: new HttpParams().set('id', id) });
+  }
 }

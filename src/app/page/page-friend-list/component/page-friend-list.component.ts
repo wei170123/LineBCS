@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatTableDataSource, MatPaginator } from '@angular/material';
-import { LineUserModel } from '../../../model/friendList-model';
 import { DataService } from '../../../service/data/data.service';
 
 @Component({
