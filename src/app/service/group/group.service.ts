@@ -18,26 +18,14 @@ export class GroupService {
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-
-    // create a http-post request and pass the form
-    // tell it to report the upload progress
-    const req = new HttpRequest('POST', environment.bcs + '/bcs/group/uploadFile', formData);
-
+    console.log(file.name);
     // send the http-request and subscribe for progress-updates
-    return this.http.request(req);
+    return this.http.post(environment.bcs + '/bcs/group/uploadFile', formData);
 
   }
 
   public createGroup(group: GroupModel): Observable<any> {
-    let base = this.http.post(environment.bcs + '/bcs/group/createGroup', group);
-
-    const request = base.pipe(
-      map((data: string) => {
-        return data;
-      })
-    );
-
-    return request;
+    return this.http.post(environment.bcs + '/bcs/group/createGroup', group);
   }
 
 }
