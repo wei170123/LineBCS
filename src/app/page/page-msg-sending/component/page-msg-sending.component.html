@@ -9,11 +9,12 @@
           發送方式
         </td>
         <td>
-          <mat-radio-group [(ngModel)]="sendingMethod">
-            <mat-radio-button value="IMMEDIATE">立即發送</mat-radio-button>
-            &nbsp;
-            <mat-radio-button value="SCHEDULE">預約發送</mat-radio-button>
+          <mat-radio-group>
+            <mat-radio-button class="example-radio-button" *ngFor="let method of methods" [value]="method.value">
+              {{method.chinese}}
+            </mat-radio-button>
           </mat-radio-group>
+          <div class="example-selected-value">Your favorite season is: {{sendingMethod}}</div>
         </td>
       </tr>
       <tr>
@@ -21,11 +22,25 @@
           發送時間
         </td>
         <td>
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="選擇日期">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          <div fxLayout="row">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="選擇日期">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field style="width: 100px;">
+              <mat-select placeholder="時">
+                <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field style="width: 100px;">
+              <mat-select placeholder="分">
+                <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </td>
       </tr>
       <tr>
@@ -43,10 +58,6 @@
         </td>
       </tr>
       <tr>
-        <td>
-          <p></p>
-          成員
-        </td>
         <td>
 
         </td>
