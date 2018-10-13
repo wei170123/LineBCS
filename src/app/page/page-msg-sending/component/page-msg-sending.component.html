@@ -1,3 +1,59 @@
-<p>
-  page-msg-sending works!
-</p>
+<h2>訊息發送</h2>
+
+<div class="container" fxLayoutAlign="center">
+
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          發送方式
+        </td>
+        <td>
+          <mat-radio-group [(ngModel)]="sendingMethod">
+            <mat-radio-button value="IMMEDIATE">立即發送</mat-radio-button>
+            &nbsp;
+            <mat-radio-button value="SCHEDULE">預約發送</mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          發送時間
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="選擇日期">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          發送群組
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-select placeholder="選擇群組">
+              <mat-option *ngFor="let group of groups" [value]="group.groupId">
+                {{group.groupName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p></p>
+          成員
+        </td>
+        <td>
+
+        </td>
+      </tr>
+    </table>
+    <p></p>
+    <button mat-raised-button color="primary">建立</button>
+  </form>
+
+</div>

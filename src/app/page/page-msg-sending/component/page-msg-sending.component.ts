@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-msg-sending.component.css']
 })
 export class PageMsgSendingComponent implements OnInit {
+  // formData: GroupModel = {
+  //   groupName: '',
+  //   groupDescription: '',
+  //   groupMainId: 0
+  // };
 
   constructor() { }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { GroupService } from '../../../service/group/group.service';
@@ -31,9 +31,8 @@ export class PageGroupListComponent implements OnInit {
     console.log(id);
     this.group.getUserListById(id).subscribe(
       data => {
-        // const blob = new Blob([data.url]); // 檔案類型 file type
-        // const filename = data.fileName; // 你想存的名字 The name you want to save
-        // saveAs(blob, filename);
+        // const blob = new Blob([data]); // 檔案類型 file type
+        // saveAs(blob);
         window.open(data.url);
       }
     );

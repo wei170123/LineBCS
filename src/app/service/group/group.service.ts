@@ -13,7 +13,6 @@ export class GroupService {
   constructor(private http: HttpClient) { }
 
   public uploadFile(file: File): Observable<any> {
-    var status = {};
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
