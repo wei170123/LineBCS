@@ -9,12 +9,15 @@
           發送方式
         </td>
         <td>
-          <mat-radio-group>
-            <mat-radio-button class="example-radio-button" *ngFor="let method of methods" [value]="method.value">
-              {{method.chinese}}
+          <mat-radio-group [(ngModel)]="sendingMethod" [ngModelOptions]="{standalone: true}">
+            <mat-radio-button class="example-radio-button" value="Immediate" name="Immediate">
+              立即發送
+            </mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="Scheduled" name="Scheduled">
+              預約發送
             </mat-radio-button>
           </mat-radio-group>
-          <div class="example-selected-value">Your favorite season is: {{sendingMethod}}</div>
+          <!-- <div class="example-selected-value">Method is: {{sendingMethod}}</div> -->
         </td>
       </tr>
       <tr>
@@ -24,7 +27,7 @@
         <td>
           <div fxLayout="row">
             <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="選擇日期">
+              <input matInput [matDatepicker]="picker" placeholder="選擇日期" [(ngModel)]="sendingDate" name="sendingDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -40,6 +43,7 @@
                 <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
               </mat-select>
             </mat-form-field>
+            <div class="example-selected-value">sendingDate is: {{sendingDate | date:'shortDate'}}</div>
           </div>
         </td>
       </tr>
@@ -64,7 +68,11 @@
       </tr>
     </table>
     <p></p>
-    <button mat-raised-button color="primary">建立</button>
+
+    <button mat-raised-button color="primary">傳送給我</button>
+    &nbsp;
+    <button mat-raised-button color="primary">發送訊息</button>
+
   </form>
 
 </div>
