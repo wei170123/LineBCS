@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -33,6 +34,7 @@ import { PageMsgSendingComponent } from './component/page-msg-sending.component'
     MatSelectModule,
     PageMsgSendingRoutingModule
   ],
+  providers: [DatePipe],
   declarations: [PageMsgSendingComponent]
 })
 export class PageMsgSendingModule { }

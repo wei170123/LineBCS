@@ -14,10 +14,10 @@ export class PageGroupListComponent implements OnInit {
   groupDataSource = new MatTableDataSource<any>();
   totalCount;
   fileUrl;
-  constructor(private group: GroupService) { }
+  constructor(private groupService: GroupService) { }
 
   ngOnInit() {
-    this.group.getGroupList()
+    this.groupService.getGroupList()
       .subscribe(
         data => {
           this.totalCount = data.length;
@@ -29,7 +29,7 @@ export class PageGroupListComponent implements OnInit {
 
   exportList(id: number) {
     console.log(id);
-    this.group.getUserListById(id).subscribe(
+    this.groupService.getUserListById(id).subscribe(
       data => {
         // const blob = new Blob([data]); // 檔案類型 file type
         // saveAs(blob);

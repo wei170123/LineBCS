@@ -20,7 +20,7 @@
           <!-- <div class="example-selected-value">Method is: {{sendingMethod}}</div> -->
         </td>
       </tr>
-      <tr>
+      <tr *ngIf="sendingMethod == 'Scheduled'">
         <td>
           發送時間
         </td>
@@ -33,17 +33,19 @@
             </mat-form-field>
             &nbsp;
             <mat-form-field style="width: 100px;">
-              <mat-select placeholder="時">
+              <mat-select placeholder="時" [(ngModel)]="sendingHour" name="sendingHour">
                 <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
               </mat-select>
             </mat-form-field>
             &nbsp;
             <mat-form-field style="width: 100px;">
-              <mat-select placeholder="分">
+              <mat-select placeholder="分" [(ngModel)]="sendingMinute" name="sendingMinute">
                 <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <div class="example-selected-value">sendingDate is: {{sendingDate | date:'shortDate'}}</div>
+            <!-- <div class="example-selected-value">sendingDate is: {{sendingDate | date:'shortDate'}}</div> -->
+            <!-- <div class="example-selected-value">sendingHour is: {{sendingHour }}</div>
+            <div class="example-selected-value">sendingMinute is: {{sendingMinute }}</div> -->
           </div>
         </td>
       </tr>
@@ -53,11 +55,12 @@
         </td>
         <td>
           <mat-form-field>
-            <mat-select placeholder="選擇群組">
-              <mat-option *ngFor="let group of groups" [value]="group.groupId">
-                {{group.groupName}}
-              </mat-option>
+            <mat-select placeholder="選擇群組" [(ngModel)]="sendingGroup" name="sendingGroup">
+              <mat-option *ngFor="let group of groupList" [value]="group._id">{{group.groupName}}</mat-option>
             </mat-select>
+            <!-- <mat-select placeholder="分" >
+              <mat-option *ngFor="let minute of minutes" [value]="minute">{{minute}}</mat-option>
+            </mat-select> -->
           </mat-form-field>
         </td>
       </tr>
@@ -69,7 +72,7 @@
     </table>
     <p></p>
 
-    <button mat-raised-button color="primary">傳送給我</button>
+    <button mat-raised-button (click)="sendToMe()" color="primary">傳送給我</button>
     &nbsp;
     <button mat-raised-button color="primary">發送訊息</button>
 

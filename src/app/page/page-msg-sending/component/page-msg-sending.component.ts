@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+
+import { GroupModel } from '../../../model/group-model';
+
+import { GroupService } from '../../../service/group/group.service';
 
 @Component({
   selector: 'app-page-msg-sending',
@@ -15,28 +20,45 @@ export class PageMsgSendingComponent implements OnInit {
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
     51, 52, 53, 54, 55, 56, 57, 59];
   methods = [
-    {
-      "value": 'Immediate',
-      "chinese": '立即發送'
-    }
-    ,
-    {
-      "value": 'Scheduled',
-      "chinese": '預約發送'
-    }
+    { "value": 'Immediate', "chinese": '立即發送' },
+    { "value": 'Scheduled', "chinese": '預約發送' }
   ];
 
+  groupList: GroupModel[];
+
   sendingMethod: string = "";
-  sendingDate: string = "";
+  sendingDate: Date;
+  sendingHour: number;
+  sendingMinute: number;
+  sendingGroup: number;
+
+
   // formData: GroupModel = {
   //   groupName: '',
   //   groupDescription: '',
   //   groupMainId: 0
   // };
 
-  constructor() { }
+  constructor(private datePipe: DatePipe, private groupService: GroupService) { }
 
   ngOnInit() {
+    this.groupService.getGroupList()
+      .subscribe(
+        data => {
+          this.groupList = data;
+          // console.log(this.groupList);
+        }
+      );
   }
 
+  sendToMe() {
+    // console.log(this.transformDate(this.sendingDate));
+    // console.log(this.sendingHour);
+    // console.log(this.sendingMinute);
+    console.log(this.sendingGroup);
+  }
+
+  transformDate(date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
 }
