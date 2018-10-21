@@ -20,3 +20,14 @@
   .example-selected-value {
     margin: 15px 0;
   }
+
+  .example-card {
+    /* max-width: 400px; */
+    /* width: 80%; */
+  }
+  
+  .textMsg-form {
+    min-width: 400px;
+    /* max-width: 500px; */
+    width: 90%;
+  }

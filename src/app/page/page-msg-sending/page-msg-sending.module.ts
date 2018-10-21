@@ -13,7 +13,9 @@ import {
   MatDatepickerModule,
   MatRadioModule,
   MatOptionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDividerModule,
+  MatIconModule
 } from '@angular/material';
 
 import { PageMsgSendingRoutingModule } from './page-msg-sending-routing.module';
@@ -32,6 +34,8 @@ import { PageMsgSendingComponent } from './component/page-msg-sending.component'
     MatRadioModule,
     MatOptionModule,
     MatSelectModule,
+    MatDividerModule,
+    MatIconModule,
     PageMsgSendingRoutingModule
   ],
   providers: [DatePipe],

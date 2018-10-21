@@ -1,6 +1,7 @@
 export interface MsgSendingModel {
-    date: Date;
-    msg: JSON;
+    sendType: string,
+    date?: string;
+    msg: any[];
     groupMainId: number;
     createTime?: string;
 }
