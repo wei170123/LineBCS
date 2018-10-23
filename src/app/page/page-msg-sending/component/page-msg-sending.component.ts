@@ -55,7 +55,7 @@ export class PageMsgSendingComponent implements OnInit {
   counter = 0;
   textTempBoolean: boolean[] = [false];
   closeTextTempate(index: number) {
-    console.log(index);
+    // console.log(index);
     this.textTempBoolean[index] = false;
     this.counter--;
   }
@@ -70,39 +70,51 @@ export class PageMsgSendingComponent implements OnInit {
   }
 
   sendToMe() {
-    // console.log(this.transformDate(this.sendingDate));
-    // console.log(this.sendingHour);
-    // console.log(this.sendingMinute);
-    // console.log(this.sendingGroup);
-    // if (this.sendingType == "" || this.sendingGroup == 0) {
-    //   alert("請確認欄位內容!");
-    //   return;
-    // }
-    // if (!this.sendingDate && (this.sendingType == "Scheduled")) {
-    //   alert("請確認欄位內容!");
-    //   return;
-    // }
-    // if (!this.sendingDate && (this.sendingType == "Scheduled")) {
-    //   alert("請確認欄位內容!");
-    //   return;
-    // }
-    let formData = {} as MsgSendingModel;
 
+    if (this.sendingType == "" || this.sendingGroup == 0) {
+      alert("請確認欄位內容!");
+      return;
+    }
+    if (!this.sendingDate && (this.sendingType == "Scheduled")) {
+      alert("請確認欄位內容!");
+      return;
+    }
+    if (!this.sendingDate && (this.sendingType == "Scheduled")) {
+      alert("請確認欄位內容!");
+      return;
+    }
+
+    let formData = {} as MsgSendingModel;
+    let msgArr = [];
 
     this.msgs.toArray().forEach((item) => {
       // console.log(item.nativeElement.value);
       // console.log(item.nativeElement.getAttribute('type'));
+
       let tmpMsg = {
         type: item.nativeElement.getAttribute('type'),
         content: item.nativeElement.value
       }
-      formData.msg.push(tmpMsg);
+      msgArr.push(tmpMsg);
+
+      if (!item.nativeElement.value) {
+        alert("請確認訊息內容!");
+        return;
+      }
     })
+    // console.log(msgArr.length);
+    if (msgArr.length == 0) {
+      alert("請選擇訊息類型!");
+      return;
+    }
+
+    formData.date = this.transformDate(this.sendingDate) + "-" + this.sendingHour + "-" + this.sendingMinute;
+    formData.groupMainId = this.sendingGroup;
+    formData.sendType = this.sendingType;
+    formData.msg = msgArr;
     console.log(formData);
-    // this.formData.date = this.transformDate(this.sendingDate) + "-" + this.sendingHour + "-" + this.sendingMinute;
-    // this.formData.groupMainId = this.sendingGroup;
-    // this.formData.sendType = this.sendingType;
-    // console.log(this.formData);
+
+
   }
 
 }

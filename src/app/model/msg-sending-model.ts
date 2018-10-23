@@ -1,5 +1,5 @@
 export interface MsgSendingModel {
-    sendType: string,
+    sendType: string;
     date?: string;
     msg: any[];
     groupMainId: number;
