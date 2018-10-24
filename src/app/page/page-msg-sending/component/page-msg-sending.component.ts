@@ -5,6 +5,7 @@ import { GroupModel } from '../../../model/group-model';
 import { MsgSendingModel } from '../../../model/msg-sending-model';
 
 import { GroupService } from '../../../service/group/group.service';
+import { MsgSendService } from '../../../service/msgSend/msg-send.service';
 
 @Component({
   selector: 'app-page-msg-sending',
@@ -36,7 +37,7 @@ export class PageMsgSendingComponent implements OnInit {
   sendingMinute: number;
   sendingGroup: number = 0;
 
-  constructor(private datePipe: DatePipe, private groupService: GroupService) { }
+  constructor(private datePipe: DatePipe, private groupService: GroupService, private msgSendService: MsgSendService) { }
 
   ngOnInit() {
     this.groupService.getGroupList()
@@ -69,7 +70,7 @@ export class PageMsgSendingComponent implements OnInit {
     }
   }
 
-  sendToMe() {
+  sendMsg(receiver: string) {
 
     if (this.sendingType == "" || this.sendingGroup == 0) {
       alert("請確認欄位內容!");
@@ -109,12 +110,23 @@ export class PageMsgSendingComponent implements OnInit {
     }
 
     formData.date = this.transformDate(this.sendingDate) + "-" + this.sendingHour + "-" + this.sendingMinute;
+    formData.receiver = receiver;
     formData.groupMainId = this.sendingGroup;
     formData.sendType = this.sendingType;
     formData.msg = msgArr;
     console.log(formData);
 
-
+    this.msgSendService.sendMsg(formData)
+      .subscribe(
+        (data) => {
+          // console.log(data);
+          alert('發送成功!');
+        },
+        (err) => {
+          // console.info(err);
+          alert('發送失敗，請洽服務人員!');
+        }
+      );
   }
 
 }

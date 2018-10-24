@@ -57,7 +57,7 @@
         <td>
           <mat-form-field>
             <mat-select placeholder="選擇群組" [(ngModel)]="sendingGroup" name="sendingGroup">
-              <mat-option *ngFor="let group of groupList" [value]="group._id">{{group.groupName}}</mat-option>
+              <mat-option *ngFor="let group of groupList" [value]="group.groupMainId">{{group.groupName}}</mat-option>
             </mat-select>
           </mat-form-field>
         </td>
@@ -106,8 +106,8 @@
     <mat-divider></mat-divider>
     <p></p>
     <div class="container" fxLayoutAlign="center end" fxLayoutGap="10px">
-      <button mat-raised-button (click)="sendToMe()" color="primary">傳送給我</button>
-      <button mat-raised-button color="primary">發送訊息</button>
+      <button mat-raised-button (click)="sendMsg('SendToMe')" color="primary">傳送給我</button>
+      <button mat-raised-button (click)="sendMsg('SendMsg')" color="primary">發送訊息</button>
     </div>
   </form>
 

@@ -13,7 +13,7 @@ export class MsgSendService {
   constructor(private http: HttpClient) { }
 
   public sendMsg(msgModel: MsgSendingModel): Observable<any> {
-    return this.http.post(environment.bcs + '/bcs/group/createGroup', msgModel);
+    return this.http.post(environment.bcs + '/bcs/msg/sendMsg', msgModel);
   }
 
 }
