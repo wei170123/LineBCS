@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { GroupModel } from '../../../model/group-model';
 import { MsgSendingModel } from '../../../model/msg-sending-model';
@@ -37,7 +38,7 @@ export class PageMsgSendingComponent implements OnInit {
   sendingMinute: number;
   sendingGroup: number = 0;
 
-  constructor(private datePipe: DatePipe, private groupService: GroupService, private msgSendService: MsgSendService) { }
+  constructor(private datePipe: DatePipe, private groupService: GroupService, private msgSendService: MsgSendService, private router: Router) { }
 
   ngOnInit() {
     this.groupService.getGroupList()
@@ -133,7 +134,8 @@ export class PageMsgSendingComponent implements OnInit {
       .subscribe(
         (data) => {
           // console.log(data);
-          alert('發送成功!');
+          alert('發送完畢!');
+          this.router.navigateByUrl('/bcs/msgList');
         },
         (err) => {
           // console.info(err);

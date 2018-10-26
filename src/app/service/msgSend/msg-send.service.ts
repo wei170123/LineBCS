@@ -16,4 +16,7 @@ export class MsgSendService {
     return this.http.post(environment.bcs + '/bcs/msg/sendMsg', msgModel);
   }
 
+  public getMsgSendedList() {
+    return this.http.get<any[]>(environment.bcs + '/bcs/msg/msgList');
+  }
 }

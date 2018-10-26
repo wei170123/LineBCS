@@ -1,3 +1,33 @@
-<p>
-  page-msg-list works!
-</p>
+<h2>訊息列表</h2>
+
+<div class="container" fxLayoutAlign="center">
+
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0" border="1">
+      <tr>
+        <td>
+          訊息內容
+        </td>
+        <td>
+          發送時間
+        </td>
+        <td>
+          發送狀態
+        </td>
+      </tr>
+      <tr *ngFor="let msg of msgList">
+        <td>
+          <p *ngFor="let c of msg.content">{{getMsgType(c.type)}} : {{c.text}}</p>
+        </td>
+        <td>
+          {{msg.createTime}}
+        </td>
+        <td>
+          {{msg.status}}
+        </td>
+        <mat-divider></mat-divider>
+      </tr>
+    </table>
+
+  </form>
+</div>
