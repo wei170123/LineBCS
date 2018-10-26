@@ -72,21 +72,29 @@ export class PageMsgSendingComponent implements OnInit {
 
   sendMsg(receiver: string) {
 
-    if (this.sendingType == "" || this.sendingGroup == 0) {
-      alert("請確認欄位內容!");
-      return;
+    if (receiver != 'SendToMe') {
+      if (this.sendingType == "" || this.sendingGroup == 0) {
+        alert("請確認欄位內容!");
+        return;
+      }
+      if (!this.sendingDate && (this.sendingType == "Scheduled")) {
+        alert("請確認欄位內容!");
+        return;
+      }
+      if (!this.sendingHour && (this.sendingType == "Scheduled")) {
+        alert("請確認欄位內容!");
+        return;
+      }
+      if (!this.sendingMinute && (this.sendingType == "Scheduled")) {
+        alert("請確認欄位內容!");
+        return;
+      }
     }
-    if (!this.sendingDate && (this.sendingType == "Scheduled")) {
-      alert("請確認欄位內容!");
-      return;
-    }
-    if (!this.sendingDate && (this.sendingType == "Scheduled")) {
-      alert("請確認欄位內容!");
-      return;
-    }
+
 
     let formData = {} as MsgSendingModel;
     let msgArr = [];
+    let msgContentNull = false;
 
     this.msgs.toArray().forEach((item) => {
       // console.log(item.nativeElement.value);
@@ -99,13 +107,18 @@ export class PageMsgSendingComponent implements OnInit {
       msgArr.push(tmpMsg);
 
       if (!item.nativeElement.value) {
-        alert("請確認訊息內容!");
+        msgContentNull = true;
         return;
       }
     })
     // console.log(msgArr.length);
     if (msgArr.length == 0) {
       alert("請選擇訊息類型!");
+      return;
+    }
+
+    if (msgContentNull) {
+      alert("請確認訊息內容!");
       return;
     }
 
