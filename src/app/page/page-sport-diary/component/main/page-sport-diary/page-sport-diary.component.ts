@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+
+import { DataService } from '../../../../../service/data/data.service';
 
 @Component({
   selector: 'app-page-sport-diary',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageSportDiaryComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('paginator') paginator: MatPaginator;
+
+  lineUserDataSource = new MatTableDataSource<any>();
+  totalCount;
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getFriendList()
+      .subscribe(
+        data => {
+          this.totalCount = data.length;
+          this.lineUserDataSource.data = data;
+          this.lineUserDataSource.paginator = this.paginator;
+        }
+      );
   }
 
 }

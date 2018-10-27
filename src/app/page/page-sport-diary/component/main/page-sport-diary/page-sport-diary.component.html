@@ -1,3 +1,30 @@
-<p>
-  page-sport-diary works!
-</p>
+<h2>運動日記</h2>
+
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="lineUserDataSource">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>名稱</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.name ? lineUserModel.name : '--No Name--'}}</mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="uid">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.uid }}</mat-cell>
+  </ng-container> -->
+  <ng-container matColumnDef="createTime">
+    <mat-header-cell *matHeaderCellDef>加入時間</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ lineUserModel.createTime }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="diary">
+    <mat-header-cell *matHeaderCellDef>日記</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary">查看</button></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['name','createTime', 'diary']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['name','createTime','diary']"></mat-row>
+</mat-table>
