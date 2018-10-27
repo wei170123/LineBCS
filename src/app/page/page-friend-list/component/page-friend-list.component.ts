@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { DataService } from '../../../service/data/data.service';
 
+import { MsgSendingModel } from '../../../model/msg-sending-model';
+
 @Component({
   selector: 'app-page-friend-list',
   templateUrl: './page-friend-list.component.html',
@@ -35,5 +37,9 @@ export class PageFriendListComponent implements OnInit {
     } else if (status == 'BLOCK') {
       return '封鎖';
     }
+  }
+
+  sendMsg() {
+    let formData = {} as MsgSendingModel;
   }
 }

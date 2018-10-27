@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  MatButtonModule,
   MatTableModule,
   MatSortModule,
   MatPaginatorModule
@@ -13,6 +14,7 @@ import { PageFriendListRoutingModule } from './page-friend-list-routing.module';
 @NgModule({
   imports: [
     CommonModule,
+    MatButtonModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,

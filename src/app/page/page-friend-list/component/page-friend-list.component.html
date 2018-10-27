@@ -25,7 +25,12 @@
     <mat-cell *matCellDef="let lineUserModel">{{ getChineseStatus(lineUserModel.status)}}</mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['name', 'uid', 'createTime', 'status']"></mat-header-row>
+  <ng-container matColumnDef="message">
+    <mat-header-cell *matHeaderCellDef>訊息</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary">訊息</button></mat-cell>
+  </ng-container>
 
-  <mat-row *matRowDef="let row; columns: ['name', 'uid', 'createTime', 'status']"></mat-row>
+  <mat-header-row *matHeaderRowDef="['name', 'uid', 'createTime', 'status', 'message']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['name', 'uid', 'createTime', 'status', 'message']"></mat-row>
 </mat-table>
