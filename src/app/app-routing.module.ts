@@ -34,6 +34,10 @@ const routes: Routes = [
         loadChildren: './page/page-msg-sending/page-msg-sending.module#PageMsgSendingModule'
       },
       {
+        path: 'article',
+        loadChildren: './page/page-article/page-article.module#PageArticleModule'
+      },
+      {
         path: 'friendList',
         loadChildren: './page/page-friend-list/page-friend-list.module#PageFriendListModule'
       },

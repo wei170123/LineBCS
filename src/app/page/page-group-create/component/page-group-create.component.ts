@@ -5,8 +5,6 @@ import { GroupModel } from '../../../model/group-model';
 
 import { GroupService } from '../../../service/group/group.service';
 
-import { environment } from '../../../../environments/environment';
-
 @Component({
   selector: 'app-page-group-create',
   templateUrl: './page-group-create.component.html',

@@ -1,0 +1,62 @@
+<h2>文章建立</h2>
+
+<div class="container" fxLayoutAlign="center">
+
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          標題
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Title" [(ngModel)]="formData.title" name="title">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          作者
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Author" [(ngModel)]="formData.author" name="author">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          圖片
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Image" [(ngModel)]="formData.imgLink" name="imgLink">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <p></p>
+    <div class="container" fxLayoutAlign="center">
+      <table fxFlex="grow">
+        <tr>
+          內容
+        </tr>
+        <tr>
+          <div class="container" fxLayoutAlign="center end" fxLayoutGap="10px">
+            <mat-form-field class="example-textarea-width">
+              <textarea matInput placeholder="Content" rows="10" [(ngModel)]="formData.content" name="content"></textarea>
+            </mat-form-field>
+          </div>
+        </tr>
+      </table>
+    </div>
+    <p></p>
+    <p></p>
+    <mat-divider></mat-divider>
+    <p></p>
+    <div class="container" fxLayoutAlign="center end" fxLayoutGap="10px">
+      <button mat-raised-button color="primary" (click)="createArticle()">建立</button>
+    </div>
+  </form>
+
+</div>

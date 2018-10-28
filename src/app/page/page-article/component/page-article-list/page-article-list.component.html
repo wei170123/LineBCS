@@ -1,0 +1,36 @@
+<h2>文章列表</h2>
+
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="articleDataSource">
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef>標題</mat-header-cell>
+    <mat-cell *matCellDef="let articleModel">{{ articleModel.title }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="author">
+    <mat-header-cell *matHeaderCellDef>作者</mat-header-cell>
+    <mat-cell *matCellDef="let articleModel">{{ articleModel.author}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="link">
+    <mat-header-cell *matHeaderCellDef>連結</mat-header-cell>
+    <mat-cell *matCellDef="let articleModel"><a href="{{ articleModel.link }}" target="blank">文章連結</a></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createTime">
+    <mat-header-cell *matHeaderCellDef>建立時間</mat-header-cell>
+    <mat-cell *matCellDef="let articleModel">{{ transformDate(articleModel.createTime) }}</mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef>編輯</mat-header-cell>
+    <mat-cell *matCellDef="let articleModel"><button mat-raised-button>刪除</button></mat-cell>
+  </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="['title', 'author', 'link', 'createTime']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['title', 'author', 'link', 'createTime']"></mat-row>
+</mat-table>
