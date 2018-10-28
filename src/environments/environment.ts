@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  bcs: 'http://localhost:3000',
-  bcsFront: 'http://localhost:4200'
+  bcs: 'https://ptlb.weiyuanyuan.idv.tw:3000',
+  bcsFront: 'http://220.229.65.81:4200'
 };
 
 /*
