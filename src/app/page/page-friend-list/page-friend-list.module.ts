@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 import {
   MatButtonModule,
@@ -20,6 +21,7 @@ import { PageFriendListRoutingModule } from './page-friend-list-routing.module';
     MatPaginatorModule,
     PageFriendListRoutingModule
   ],
+  providers: [DatePipe],
   declarations: [
     PageFriendListComponent
   ]

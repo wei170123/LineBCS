@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { DatePipe } from '@angular/common';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+
 import { DataService } from '../../../service/data/data.service';
 
 import { MsgSendingModel } from '../../../model/msg-sending-model';
@@ -16,7 +17,7 @@ export class PageFriendListComponent implements OnInit {
   lineUserDataSource = new MatTableDataSource<any>();
   totalCount;
 
-  constructor(private data: DataService) { }
+  constructor(private datePipe: DatePipe, private data: DataService) { }
 
   ngOnInit() {
     this.data.getFriendList()
@@ -27,6 +28,10 @@ export class PageFriendListComponent implements OnInit {
           this.lineUserDataSource.paginator = this.paginator;
         }
       );
+  }
+
+  transformDate(date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
   getChineseStatus(status) {
@@ -42,4 +47,5 @@ export class PageFriendListComponent implements OnInit {
   sendMsg() {
     let formData = {} as MsgSendingModel;
   }
+
 }
