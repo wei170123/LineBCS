@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 
@@ -16,7 +18,7 @@ export class PageSportDiaryComponent implements OnInit {
   lineUserDataSource = new MatTableDataSource<any>();
   totalCount;
 
-  constructor(private data: DataService) { }
+  constructor(private datePipe: DatePipe, private router: Router, private data: DataService) { }
 
   ngOnInit() {
     this.data.getFriendList()
@@ -29,4 +31,11 @@ export class PageSportDiaryComponent implements OnInit {
       );
   }
 
+  showSportDiaryDetail(uid: string, name: string) {
+    this.router.navigateByUrl('/bcs/sportDiary/detail/' + uid + '/' + name);
+  }
+
+  transformDate(date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm');
+  }
 }

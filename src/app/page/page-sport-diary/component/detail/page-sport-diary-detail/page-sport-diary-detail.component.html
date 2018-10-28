@@ -1,3 +1,21 @@
-<p>
-  page-sport-diary-detail works!
-</p>
+<h2>運動日記 - {{name}}</h2>
+
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="sportDiaryDataSource">
+
+  <ng-container matColumnDef="createTime">
+    <mat-header-cell *matHeaderCellDef>記錄時間</mat-header-cell>
+    <mat-cell *matCellDef="let sportDiaryModel" class="mat-column-user">{{ transformDate(sportDiaryModel.createTime) }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef>描述</mat-header-cell>
+    <mat-cell *matCellDef="let sportDiaryModel">{{ sportDiaryModel.description }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['createTime', 'description']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['createTime', 'description']"></mat-row>
+</mat-table>

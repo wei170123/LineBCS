@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 import {
   MatButtonModule,
@@ -7,7 +8,6 @@ import {
   MatSortModule,
   MatPaginatorModule
 } from '@angular/material';
-
 
 import { PageSportDiaryRoutingModule } from './page-sport-diary-routing.module';
 import { PageSportDiaryComponent } from './component/main/page-sport-diary/page-sport-diary.component';
@@ -22,6 +22,7 @@ import { PageSportDiaryDetailComponent } from './component/detail/page-sport-dia
     MatPaginatorModule,
     PageSportDiaryRoutingModule
   ],
+  providers: [DatePipe],
   declarations: [PageSportDiaryComponent, PageSportDiaryDetailComponent]
 })
 export class PageSportDiaryModule { }

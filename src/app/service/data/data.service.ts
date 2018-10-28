@@ -15,4 +15,7 @@ export class DataService {
     return this.http.get<LineUserModel[]>(environment.bcs + '/bcs/data/friendList');
   }
 
+  public sportDiaryListByUID(uid: string) {
+    return this.http.get<any[]>(environment.bcs + '/bcs/data/sportDiaryList?uid=' + uid);
+  }
 }

@@ -6,7 +6,7 @@ import { PageSportDiaryDetailComponent } from './component/detail/page-sport-dia
 
 const routes: Routes = [
   { path: '', component: PageSportDiaryComponent },
-  { path: 'detail', component: PageSportDiaryDetailComponent },
+  { path: 'detail/:uid/:name', component: PageSportDiaryDetailComponent },
 ];
 
 @NgModule({
