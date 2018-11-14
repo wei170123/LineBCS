@@ -42,12 +42,20 @@ const routes: Routes = [
         loadChildren: './page/page-friend-list/page-friend-list.module#PageFriendListModule'
       },
       {
+        path: 'friendEffect',
+        loadChildren: './page/page-friend-effect/page-friend-effect.module#PageFriendEffectModule'
+      },
+      {
         path: 'sportDiary',
         loadChildren: './page/page-sport-diary/page-sport-diary.module#PageSportDiaryModule'
       },
       {
         path: 'sendingInfo',
         loadChildren: './page/page-sending-info/page-sending-info.module#PageSendingInfoModule'
+      },
+      {
+        path: 'linkEffect',
+        loadChildren: './page/page-link-effect/page-link-effect.module#PageLinkEffectModule'
       }
     ]
   }
