@@ -1,6 +1,47 @@
 <h2>好友成效</h2>
-
 <div class="container" fxLayoutAlign="center">
-  <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
-    [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+
+  <form class="example-form">
+    <mat-form-field>
+      <input matInput [matDatepicker]="startPicker" placeholder="起始日期" [(ngModel)]="startDate" name="startDate"
+        autocomplete="off">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    ~
+    <mat-form-field>
+      <input matInput [matDatepicker]="endPicker" placeholder="結束日期" [(ngModel)]="endDate" name="endDate" autocomplete="off">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+    &nbsp;
+    <button mat-raised-button (click)="search()" color="primary">查詢</button>
+
+    <table class="example-full-width" cellspacing="1" border="1">
+      <tr>
+        <td>
+          總有效好友數
+        </td>
+        <td>
+          {{effectFriendAmount}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          新增好友數
+        </td>
+        <td>
+          {{newFriendAmount}}
+        </td>
+      </tr>
+
+    </table>
+
+    <p></p>
+    <p></p>
+  </form>
+
+</div>
+<div class="container" fxLayoutAlign="center">
+  <canvas #lineChart>{{ chart }}</canvas>
 </div>
