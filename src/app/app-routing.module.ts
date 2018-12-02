@@ -34,6 +34,14 @@ const routes: Routes = [
         loadChildren: './page/page-msg-sending/page-msg-sending.module#PageMsgSendingModule'
       },
       {
+        path: 'traceLinkList',
+        loadChildren: './page/page-link-tracing-list/page-link-tracing-list.module#PageLinkTracingListModule'
+      },
+      {
+        path: 'traceLinkCreate',
+        loadChildren: './page/page-link-tracing-create/page-link-tracing-create.module#PageLinkTracingCreateModule'
+      },
+      {
         path: 'article',
         loadChildren: './page/page-article/page-article.module#PageArticleModule'
       },

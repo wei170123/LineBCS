@@ -1,0 +1,31 @@
+<h2>連結列表</h2>
+
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="dataSource">
+
+  <ng-container matColumnDef="traceLink">
+    <mat-header-cell *matHeaderCellDef>追蹤連結</mat-header-cell>
+    <mat-cell *matCellDef="let model">{{ model.traceLink}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="targetLink">
+    <mat-header-cell *matHeaderCellDef>目標連結</mat-header-cell>
+    <mat-cell *matCellDef="let model"><a href="{{ model.targetLink }}" target="_blank">{{ model.targetLink }}</a></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="createTime">
+    <mat-header-cell *matHeaderCellDef>建立時間</mat-header-cell>
+    <mat-cell *matCellDef="let model">{{ model.createTime }}</mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="groupMainId">
+    <mat-header-cell *matHeaderCellDef>成員列表</mat-header-cell>
+    <mat-cell *matCellDef="let groupModel">{{ groupModel.groupMainId }}</mat-cell>
+  </ng-container> -->
+
+  <mat-header-row *matHeaderRowDef="['traceLink', 'targetLink', 'createTime']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['traceLink', 'targetLink', 'createTime']"></mat-row>
+</mat-table>

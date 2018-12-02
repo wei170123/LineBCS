@@ -1,0 +1,35 @@
+<h2>連結建立</h2>
+
+<div class="container" fxLayoutAlign="center">
+
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          追蹤連結
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="追蹤連結" [(ngModel)]="traceLink" name="traceLink" disabled>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          目標連結
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="目標連結" [(ngModel)]="targetLink" name="targetLink">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <p></p>
+    <p></p>
+    <div class="container" fxLayoutAlign="center end" fxLayoutGap="10px">
+      <button mat-raised-button color="primary" (click)="createLink()">建立</button>
+    </div>
+  </form>
+
+</div>
