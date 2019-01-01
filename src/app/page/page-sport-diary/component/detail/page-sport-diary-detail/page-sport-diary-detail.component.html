@@ -10,12 +10,27 @@
     <mat-cell *matCellDef="let sportDiaryModel" class="mat-column-user">{{ transformDate(sportDiaryModel.createTime) }}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>狀態</mat-header-cell>
+    <mat-cell *matCellDef="let sportDiaryModel">
+      <div *ngIf="sportDiaryModel.status == 'good'">
+        <img src="../../assets/bcs/images/sportsDiary/green.png" height="25" width="25">
+      </div>
+      <div *ngIf="sportDiaryModel.status == 'normal'">
+        <img src="../../assets/bcs/images/sportsDiary/yellow.png" height="25" width="25">
+      </div>
+      <div *ngIf="sportDiaryModel.status == 'bad'">
+        <img src="../../assets/bcs/images/sportsDiary/red.png" height="25" width="25">
+      </div>
+    </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="description">
     <mat-header-cell *matHeaderCellDef>描述</mat-header-cell>
     <mat-cell *matCellDef="let sportDiaryModel">{{ sportDiaryModel.description }}</mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['createTime', 'description']"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="['createTime', 'status', 'description']"></mat-header-row>
 
-  <mat-row *matRowDef="let row; columns: ['createTime', 'description']"></mat-row>
+  <mat-row *matRowDef="let row; columns: ['createTime', 'status', 'description']"></mat-row>
 </mat-table>
