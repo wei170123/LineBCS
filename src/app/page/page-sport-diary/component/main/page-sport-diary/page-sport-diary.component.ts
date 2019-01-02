@@ -6,6 +6,8 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 import { DataService } from '../../../../../service/data/data.service';
 
+import { environment } from '../../../../../../environments/environment';
+
 @Component({
   selector: 'app-page-sport-diary',
   templateUrl: './page-sport-diary.component.html',
@@ -37,5 +39,9 @@ export class PageSportDiaryComponent implements OnInit {
 
   transformDate(date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm');
+  }
+
+  showSportCheckCalendar(uid: string) {
+    window.open(environment.bcs + '/check?uid=' + uid);
   }
 }

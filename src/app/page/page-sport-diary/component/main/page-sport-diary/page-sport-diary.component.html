@@ -19,12 +19,17 @@
     <mat-cell *matCellDef="let lineUserModel">{{ transformDate(lineUserModel.createTime) }}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="checkCalendar">
+    <mat-header-cell *matHeaderCellDef>檢核表</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary" (click)="showSportCheckCalendar(lineUserModel.uid)">查看</button></mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="diary">
     <mat-header-cell *matHeaderCellDef>日記</mat-header-cell>
     <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary" (click)="showSportDiaryDetail(lineUserModel.uid, lineUserModel.name)">查看</button></mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['name','createTime', 'diary']"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="['name','createTime', 'checkCalendar', 'diary']"></mat-header-row>
 
-  <mat-row *matRowDef="let row; columns: ['name','createTime','diary']"></mat-row>
+  <mat-row *matRowDef="let row; columns: ['name','createTime','checkCalendar','diary']"></mat-row>
 </mat-table>
