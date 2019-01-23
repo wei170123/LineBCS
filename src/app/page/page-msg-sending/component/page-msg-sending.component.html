@@ -72,19 +72,38 @@
         </tr>
         <tr>
           <div class="container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
-            <div *ngFor="let boolean of textTempBoolean; let i = index">
-              <mat-card class="example-card" *ngIf="boolean">
+            <div *ngFor="let type of msgTempBoolean; let i = index">
+              <mat-card class="example-card" *ngIf="type == 'text'">
                 <mat-card-header>
                   <mat-card-title>
                     <span>文字訊息</span>
-                    <button mat-icon-button (click)="closeTextTempate(i)">
+                    <!--<button mat-icon-button (click)="closeMsgTempate(i)">
                       <mat-icon>close</mat-icon>
-                    </button>
+                    </button>-->
                   </mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                   <mat-form-field class="textMsg-form">
-                    <input #msg matInput type="text" placeholder="請輸入訊息" name="textMsg" required>
+                    <input #msg matInput type="text" placeholder="請輸入訊息" name="text" required>
+                  </mat-form-field>
+                </mat-card-content>
+              </mat-card>
+
+              <mat-card class="example-card" *ngIf="type == 'image'">
+                <mat-card-header>
+                  <mat-card-title>
+                    <span>圖片訊息</span>
+                    <!--<button mat-icon-button (click)="closeMsgTempate(i)">
+                        <mat-icon>close</mat-icon>
+                      </button>-->
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-form-field class="textMsg-form">
+                    <button type="button" mat-raised-button (click)="fileInput.click()">上傳</button>
+                    <input type="file" hidden #fileInput (change)="uploadFile($event, i)" accept=".jpeg,.png">
+                    <input #msg matInput type="text" name="image" value="{{this.imgList[i]}}" hidden>
+                    <img *ngIf="this.imgList[i] != ''" src="{{this.imgList[i]}}" width="100px" height="100px">
                   </mat-form-field>
                 </mat-card-content>
               </mat-card>
@@ -94,11 +113,14 @@
       </table>
     </div>
     <p></p>
-    <div class="container" fxLayoutAlign="center end" fxLayoutGap="10px">
-      <button mat-raised-button (click)="addTextTempate()" color="primary">文字訊息</button>
+    <div class="
+                      container" fxLayoutAlign="center end" fxLayoutGap="10px">
+      <button mat-raised-button (click)="addMsgTempate('text')" color="primary">文字訊息</button>
+      <button mat-raised-button (click)="addMsgTempate('image')" color="primary">圖片訊息</button>
       <button mat-raised-button color="primary" disabled>圖文訊息</button>
       <button mat-raised-button color="primary" disabled>樣板訊息</button>
       <button mat-raised-button color="primary" disabled>位置訊息</button>
+      <button mat-raised-button (click)="closeMsgTempate(i)" color="warn" *ngIf="counter > 0">刪除</button>
       <!-- <button mat-raised-button (click)="showTextTempate()" color="primary" disabled>視頻訊息</button>
       <button mat-raised-button (click)="showTextTempate()" color="primary" disabled>音頻訊息</button> -->
     </div>

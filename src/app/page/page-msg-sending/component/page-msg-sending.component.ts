@@ -6,7 +6,10 @@ import { GroupModel } from '../../../model/group-model';
 import { MsgSendingModel } from '../../../model/msg-sending-model';
 
 import { GroupService } from '../../../service/group/group.service';
+import { UploadFileService } from '../../../service/upload/upload-file.service';
 import { MsgSendService } from '../../../service/msgSend/msg-send.service';
+
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-page-msg-sending',
@@ -38,7 +41,7 @@ export class PageMsgSendingComponent implements OnInit {
   sendingMinute: number;
   sendingGroup: number = 0;
 
-  constructor(private datePipe: DatePipe, private groupService: GroupService, private msgSendService: MsgSendService, private router: Router) { }
+  constructor(private datePipe: DatePipe, private groupService: GroupService, private uploadFileService: UploadFileService, private msgSendService: MsgSendService, private router: Router) { }
 
   ngOnInit() {
     this.groupService.getGroupList()
@@ -54,17 +57,39 @@ export class PageMsgSendingComponent implements OnInit {
     return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
 
+  imgList: string[] = ['', '', '', '', ''];
+  uploadFile(event, index) {
+    const file = event.target.files[0];
+    this.uploadFileService.uploadFile(file).subscribe(data => {
+      console.log(data);
+      if (data && data.result == "Success") {
+        // var arr = data.data.referenceId.split("\\");
+        // var imgName = arr[arr.length - 1];
+        // var id = imgName.split("\.")[0];
+        // console.log(id);
+        var imgUrl = environment.bcs + "/images/uploads/" + data.data.referenceId;
+        this.imgList[index] = imgUrl;
+        alert("上傳成功");
+      } else {
+        alert("上傳失敗");
+      }
+    });
+  }
+
+
+
   counter = 0;
-  textTempBoolean: boolean[] = [false];
-  closeTextTempate(index: number) {
+  msgTempBoolean: string[] = [];
+  closeMsgTempate(index: number) {
     // console.log(index);
-    this.textTempBoolean[index] = false;
+    // this.msgTempBoolean[index] = '';
+    this.msgTempBoolean[this.counter - 1] = '';
     this.counter--;
   }
 
-  addTextTempate() {
+  addMsgTempate(type: string) {
     if (this.counter < 5) {
-      this.textTempBoolean[this.counter] = true;
+      this.msgTempBoolean[this.counter] = type;
       this.counter++;
     } else {
       alert("每次最多五則訊息!");
@@ -98,11 +123,11 @@ export class PageMsgSendingComponent implements OnInit {
     let msgContentNull = false;
 
     this.msgs.toArray().forEach((item) => {
-      // console.log(item.nativeElement.value);
-      // console.log(item.nativeElement.getAttribute('type'));
+      console.log(item.nativeElement.value);
+      console.log(item.nativeElement.getAttribute('name'));
 
       let tmpMsg = {
-        type: item.nativeElement.getAttribute('type'),
+        type: item.nativeElement.getAttribute('name'),
         content: item.nativeElement.value
       }
       msgArr.push(tmpMsg);
