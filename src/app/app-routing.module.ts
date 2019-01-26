@@ -46,6 +46,10 @@ const routes: Routes = [
         loadChildren: './page/page-article/page-article.module#PageArticleModule'
       },
       {
+        path: 'sport',
+        loadChildren: './page/page-sport-self/page-sport-self.module#PageSportSelfModule'
+      },
+      {
         path: 'friendList',
         loadChildren: './page/page-friend-list/page-friend-list.module#PageFriendListModule'
       },

@@ -20,4 +20,9 @@ export class UploadFileService {
     return this.http.post(environment.bcs + '/bcs/uploadFile/uploadImage', formData);
 
   }
+
+  public getUploadFile(uid: string): Observable<any> {
+    console.log(uid);
+    return this.http.get(environment.bcs + '/bcs/uploadFile/imgList?uid=' + uid);
+  }
 }

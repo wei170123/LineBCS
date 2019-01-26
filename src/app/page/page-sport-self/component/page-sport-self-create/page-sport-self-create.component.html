@@ -1,0 +1,48 @@
+<h2>自訂運動</h2>
+
+<div class="container" fxLayoutAlign="center center">
+
+  <form class="example-form">
+    <table class="example-full-width">
+      <tr>
+        <td>
+          運動名稱
+        </td>
+        <td>
+          <mat-form-field class="textMsg-form">
+            <input matInput type="text" placeholder="運動名稱" name="text" [(ngModel)]="sportName" required>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          運動內容
+        </td>
+        <td>
+          <mat-form-field class="textMsg-form">
+            <input matInput type="text" placeholder="運動內容" name="text" [(ngModel)]="sportContent" required>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          圖片選擇
+        </td>
+        <td>
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center center">
+            <mat-card class="card-picture" *ngFor="let picture of userUploadImages">
+              <mat-checkbox #imgId class="example-margin" (change)="changeState(picture.referenceId)"></mat-checkbox>
+              <img mat-card-image [src]="picture.resourceTitle" height="90%">
+            </mat-card>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+    <p></p>
+    <div class="container" fxLayoutAlign="center end" fxLayoutGap="10px">
+      <button mat-raised-button (click)="createSelfSport()" color="primary">建立運動</button>
+    </div>
+  </form>
+
+</div>

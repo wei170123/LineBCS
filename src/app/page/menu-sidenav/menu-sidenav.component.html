@@ -43,6 +43,15 @@
 
     <mat-expansion-panel>
         <mat-expansion-panel-header>
+            <mat-panel-title>運動資料</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['/', 'bcs', 'sport', 'self']" mat-list-item>自訂運動</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
             <mat-panel-title>成效檢視</mat-panel-title>
         </mat-expansion-panel-header>
         <mat-nav-list>
