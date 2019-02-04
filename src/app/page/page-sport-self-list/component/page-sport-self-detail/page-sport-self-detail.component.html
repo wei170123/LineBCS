@@ -1,0 +1,31 @@
+<h2>{{name}} - 自訂運動內容</h2>
+
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="lineUserDataSource">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>運動名稱</mat-header-cell>
+    <mat-cell *matCellDef="let selfSportModel" class="mat-column-user">{{ selfSportModel.sportsName}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="content">
+    <mat-header-cell *matHeaderCellDef>運動內容</mat-header-cell>
+    <mat-cell *matCellDef="let selfSportModel">{{ selfSportModel.sportsContent}}</mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="sportImg">
+    <mat-header-cell *matHeaderCellDef>運動圖片</mat-header-cell>
+    <mat-cell *matCellDef="let selfSportModel"><div *ngFor="let img of selfSportModel.referenceId"><img  src="{{img.resourcePath}}"></div></mat-cell>
+  </ng-container> -->
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef>修改</mat-header-cell>
+    <mat-cell *matCellDef="let selfSportModel"><button mat-raised-button color="primary" (click)="delete(selfSportModel._id, selfSportModel.uid)">刪除</button></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['name', 'content', 'action']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['name', 'content', 'action']"></mat-row>
+</mat-table>

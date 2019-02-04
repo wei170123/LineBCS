@@ -15,6 +15,7 @@ export class PageSportSelfCreateComponent implements OnInit {
   sportName;
   sportContent;
   uid;
+  name;
   userUploadImages;
   imgList: string[] = [];
 
@@ -23,6 +24,7 @@ export class PageSportSelfCreateComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.uid = params['uid'];
+      this.name = params['name'];
       this.uploadFileService.getUploadFile(this.uid).subscribe(data => {
         console.log(data);
         if (data && data.result == "Success") {
@@ -50,29 +52,34 @@ export class PageSportSelfCreateComponent implements OnInit {
   }
 
   createSelfSport() {
-    this.imgList = [];
-    for (var img of this.userUploadImages) {
-      if (img.check == true) {
-        this.imgList.push(img.referenceId);
+    var r = confirm("確認建立?");
+    if(r = true){
+      this.imgList = [];
+      for (var img of this.userUploadImages) {
+        if (img.check == true) {
+          this.imgList.push(img.referenceId);
+        }
       }
+  
+      var postData = {
+        uid: this.uid,
+        sportName: this.sportName,
+        sportContent: this.sportContent,
+        sportImgId: JSON.stringify(this.imgList)
+      };
+      console.log(postData);
+  
+      this.sportsService.createSelfSport(postData).subscribe(data => {
+        console.log(data);
+        if (data && data.result == "Success") {
+  
+          alert("建立成功");
+
+          window.location.href = environment.bcsFront + '/bcs/sportSelfList/detail/' + this.uid + "/" + this.name;
+        } else {
+          alert("建立失敗");
+        }
+      });
     }
-
-    var postData = {
-      uid: this.uid,
-      sportName: this.sportName,
-      sportContent: this.sportContent,
-      sportImgId: JSON.stringify(this.imgList)
-    };
-    console.log(postData);
-
-    this.sportsService.createSelfSport(postData).subscribe(data => {
-      console.log(data);
-      if (data && data.result == "Success") {
-
-        alert("建立成功");
-      } else {
-        alert("建立失敗");
-      }
-    });
   }
 }

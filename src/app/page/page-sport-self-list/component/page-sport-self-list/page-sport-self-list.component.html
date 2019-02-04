@@ -1,0 +1,31 @@
+<h2>自訂內容</h2>
+
+<mat-paginator #paginator [length]="totalCount" [pageIndex]="0" [pageSize]="5" [pageSizeOptions]="[5, 10, 15]"
+  showFirstLastButtons>
+</mat-paginator>
+<mat-table [dataSource]="lineUserDataSource">
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>名稱</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel" class="mat-column-user">{{ lineUserModel.name ? lineUserModel.name :
+      '--No Name--'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <mat-header-cell *matHeaderCellDef>狀態</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel">{{ getChineseStatus(lineUserModel.status)}}</mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="uid">
+    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel" class="mat-column-uid">{{ lineUserModel.uid }}</mat-cell>
+  </ng-container> -->
+  <ng-container matColumnDef="self">
+    <mat-header-cell *matHeaderCellDef>自訂運動</mat-header-cell>
+    <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary" (click)="showSportDetail(lineUserModel.uid, lineUserModel.name)">建立</button></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['name', 'status', 'self']"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: ['name', 'status', 'self']"></mat-row>
+</mat-table>

@@ -50,6 +50,10 @@ const routes: Routes = [
         loadChildren: './page/page-sport-self/page-sport-self.module#PageSportSelfModule'
       },
       {
+        path: 'sportSelfList',
+        loadChildren: './page/page-sport-self-list/page-sport-self-list.module#PageSportSelfListModule'
+      },
+      {
         path: 'friendList',
         loadChildren: './page/page-friend-list/page-friend-list.module#PageFriendListModule'
       },
