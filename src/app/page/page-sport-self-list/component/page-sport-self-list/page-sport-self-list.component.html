@@ -22,7 +22,7 @@
   </ng-container> -->
   <ng-container matColumnDef="self">
     <mat-header-cell *matHeaderCellDef>自訂運動</mat-header-cell>
-    <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary" (click)="showSportDetail(lineUserModel.uid, lineUserModel.name)">建立</button></mat-cell>
+    <mat-cell *matCellDef="let lineUserModel"><button mat-raised-button color="primary" (click)="showSportDetail(lineUserModel.uid, lineUserModel.name)">檢視</button></mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="['name', 'status', 'self']"></mat-header-row>
