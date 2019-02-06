@@ -6,6 +6,10 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { DataService } from '../../../../service/data/data.service';
 import { environment } from '../../../../../environments/environment';
 
+import { SelfSPortDialogComponent } from '../../../../dialog/self-sport-dialog/self-sport-dialog.component';
+
+import { MatDialog, MatDialogConfig } from "@angular/material";
+
 @Component({
   selector: 'app-page-sport-self-detail',
   templateUrl: './page-sport-self-detail.component.html',
@@ -19,7 +23,7 @@ export class PageSportSelfDetailComponent implements OnInit {
   lineUserDataSource = new MatTableDataSource<any>();
   totalCount;
 
-  constructor(private datePipe: DatePipe, private activatedRoute: ActivatedRoute, private data: DataService, private router: Router) { }
+  constructor(private datePipe: DatePipe, private activatedRoute: ActivatedRoute, private data: DataService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -74,5 +78,11 @@ export class PageSportSelfDetailComponent implements OnInit {
 
   }
 
-
+  openDialog(referenceId: any) {
+    this.dialog.open(SelfSPortDialogComponent, {
+      data: {
+        referenceId: referenceId
+      }
+    });
+  }
 }

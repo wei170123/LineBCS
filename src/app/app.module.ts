@@ -16,6 +16,8 @@ import { MenuToolbarComponent } from './page/menu-toolbar/menu-toolbar.component
 import { HomeComponent } from './page/home/home.component';
 import { TestComponent } from './page/test/test.component';
 
+import { SelfSPortDialogComponent } from './dialog/self-sport-dialog/self-sport-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { TestComponent } from './page/test/test.component';
     MenuSidenavComponent,
     MenuToolbarComponent,
     HomeComponent,
-    TestComponent
+    TestComponent,
+    SelfSPortDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { TestComponent } from './page/test/test.component';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SelfSPortDialogComponent]
 })
 export class AppModule { }
