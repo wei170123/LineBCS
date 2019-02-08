@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  bcs: 'https://ptlb.weiyuanyuan.idv.tw:3000',
-  bcsFront: 'http://220.229.65.81:4200'
+  bcs: 'https://donesee.weiyuanyuan.idv.tw:3000',
+  bcsFront: 'https://donesee.weiyuanyuan.idv.tw:4200'
 };
 
 /*
